@@ -1,20 +1,24 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import './App.css';
 
 import NewMacroForm from './components/newMacroForm';
+import MacrosViewer from './components/macrosViewer';
 
 
 
 const App = (): JSX.Element => {
 
-  
+
 
 
 
 
   return (
-    <NewMacroForm/>
+    <Fragment>
+      <NewMacroForm />
+      <MacrosViewer />
+    </Fragment>
   );
 }
 
