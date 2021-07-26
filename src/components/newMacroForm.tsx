@@ -3,7 +3,7 @@ import React, { Fragment, useState } from 'react';
 
 type FormElement = React.FormEvent<HTMLFormElement>;
 
-
+ 
 interface FormProps{
     functionx:(num: number) => void;
   }
