@@ -7,16 +7,22 @@ import MacrosViewer from './components/macrosViewer';
 
 
 
+
+
 const App = (): JSX.Element => {
 
 
+  const funcionx = (num: number) => {
+    console.log("hola");
+    console.log(num)
 
+  }
 
 
 
   return (
     <Fragment>
-      <NewMacroForm />
+      <NewMacroForm functionx={funcionx}/>
       <MacrosViewer />
     </Fragment>
   );

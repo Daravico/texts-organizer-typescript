@@ -3,29 +3,35 @@ import React, { Fragment, useState } from 'react';
 
 type FormElement = React.FormEvent<HTMLFormElement>;
 
-interface IMacro {
-    Ititle: string,
+
+interface FormProps{
+    functionx:(num: number) => void;
+  }
+
+interface SingleMacro {
+    title: string,
     macro: string,
     category: string,
     tags: string[]
 }
 
 
-const NewMacroForm = (): JSX.Element => {
+const NewMacroForm: React.FC<FormProps> = ({functionx}) => {
 
+    // State Hooks for each of the inputs that we have.
     const [title, setTitle] = useState<string>('');
     const [macro, setMacro] = useState<string>('');
     const [category, setCategory] = useState<string>('');
     const [tagsLine, setTagsLine] = useState<string>('');
 
-    const [macrosList, setMacrosList] = useState<IMacro[]>([]);
+    
+    const [macrosList, setMacrosList] = useState<SingleMacro[]>([]);
 
 
 
     // Saving the information of the macro.
     const handleSubmit = (e: FormElement) => {
         e.preventDefault();
-        console.log("---------------");
 
         //tagsLine needs to be converted here to an array.
         const tags: string[] = [tagsLine];
@@ -39,15 +45,15 @@ const NewMacroForm = (): JSX.Element => {
     const addMacro = (e: FormElement, tags: string[]) => {
 
         // Saving the details of this macro on a const with the interface.
-        const addedMacro: IMacro = {
-            Ititle: title,
+        const addedMacro: SingleMacro = {
+            title: title,
             macro: macro,
             category: category,
             tags: tags
         }
 
         // Saving on the list.
-        const newMacroList: IMacro[] = [...macrosList, addedMacro];
+        const newMacroList: SingleMacro[] = [...macrosList, addedMacro];
         setMacrosList(newMacroList);
 
         console.log(macrosList);
