@@ -2,12 +2,14 @@ import React, { Fragment } from 'react';
 
 import './App.css';
 
-import NewMacroForm from './components/newMacroForm';
-import MacrosViewer from './components/macrosViewer';
+// React Components 
+import NewTextForm from './components/newTextForm';
+import TextsViewer from './components/TextsViewer';
+
+// Interfaces
+import {SingleText} from './interfaces/interfaces';
 
 
-
- 
 
 const App = (): JSX.Element => {
 
@@ -22,8 +24,8 @@ const App = (): JSX.Element => {
 
   return (
     <Fragment>
-      <NewMacroForm functionx={funcionx}/>
-      <MacrosViewer />
+      <NewTextForm functionx={funcionx}/>
+      <TextsViewer />
     </Fragment>
   );
 }

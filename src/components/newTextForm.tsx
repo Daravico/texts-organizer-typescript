@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react';
 
+import { SingleText } from '../interfaces/interfaces';
 
 type FormElement = React.FormEvent<HTMLFormElement>;
 
@@ -8,24 +9,19 @@ interface FormProps{
     functionx:(num: number) => void;
   }
 
-interface SingleMacro {
-    title: string,
-    macro: string,
-    category: string,
-    tags: string[]
-}
 
 
-const NewMacroForm: React.FC<FormProps> = ({functionx}) => {
+
+const NewTextForm: React.FC<FormProps> = ({functionx}) => {
 
     // State Hooks for each of the inputs that we have.
     const [title, setTitle] = useState<string>('');
-    const [macro, setMacro] = useState<string>('');
+    const [text, setText] = useState<string>('');
     const [category, setCategory] = useState<string>('');
     const [tagsLine, setTagsLine] = useState<string>('');
 
     
-    const [macrosList, setMacrosList] = useState<SingleMacro[]>([]);
+    const [macrosList, setMacrosList] = useState<SingleText[]>([]);
 
 
 
@@ -45,15 +41,15 @@ const NewMacroForm: React.FC<FormProps> = ({functionx}) => {
     const addMacro = (e: FormElement, tags: string[]) => {
 
         // Saving the details of this macro on a const with the interface.
-        const addedMacro: SingleMacro = {
+        const addedMacro: SingleText = {
             title: title,
-            macro: macro,
+            text: text,
             category: category,
             tags: tags
         }
 
         // Saving on the list.
-        const newMacroList: SingleMacro[] = [...macrosList, addedMacro];
+        const newMacroList: SingleText[] = [...macrosList, addedMacro];
         setMacrosList(newMacroList);
 
         console.log(macrosList);
@@ -65,7 +61,7 @@ const NewMacroForm: React.FC<FormProps> = ({functionx}) => {
             <form onSubmit={handleSubmit}>
                 <input type="text" placeholder="Titulo" value={title} onChange={e => { setTitle(e.target.value) }} />
                 <br />
-                <textarea placeholder="Contenido" value={macro} onChange={e => { setMacro(e.target.value) }} />
+                <textarea placeholder="Contenido" value={text} onChange={e => { setText(e.target.value) }} />
                 <br />
                 <input type="text" placeholder="Categoria" value={category} onChange={e => { setCategory(e.target.value) }} />
                 <br />
@@ -78,4 +74,4 @@ const NewMacroForm: React.FC<FormProps> = ({functionx}) => {
     );
 }
 
-export default NewMacroForm;
+export default NewTextForm;

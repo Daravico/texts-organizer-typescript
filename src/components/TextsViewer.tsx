@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react';
 
-const MacrosViewer = (): JSX.Element => {
+
+
+const TextsViewer = (): JSX.Element => {
 
     return (
         <Fragment>
@@ -10,4 +12,4 @@ const MacrosViewer = (): JSX.Element => {
 
 }
 
-export default MacrosViewer;
+export default TextsViewer;
