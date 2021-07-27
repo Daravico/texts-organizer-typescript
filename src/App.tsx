@@ -1,7 +1,5 @@
 import React, { Fragment, useState } from "react";
 
-import "./App.css";
-
 // React Components
 import NewTextForm from "./components/newTextForm";
 import TextsViewer from "./components/TextsViewer";
@@ -10,11 +8,11 @@ import TextsViewer from "./components/TextsViewer";
 import { SingleText } from "./interfaces/interfaces";
 
 // Sample
-//import texts from "./samples/texts.json";
+import texts from "./samples/texts";
 
 const App = (): JSX.Element => {
 
-  const [textsList, setTextList] = useState<SingleText[]>([]);
+  const [textsList, setTextList] = useState<SingleText[]>(texts);
 
   // NewTextForm Functions.
   // -----------------------------------------------

@@ -1,20 +1,24 @@
 import React, { Fragment } from 'react';
 
+// Interfaces
 import { SingleText } from "../interfaces/interfaces";
 
+// React Components.
+import SingleTextView from "./SingleTextView";
 
+// Local interface for PROPS
 interface ViewerProps {
     textsList: SingleText[]
 }
 
 
-const TextsViewer: React.FC<ViewerProps> = ({ textsList }): JSX.Element => {
+const TextsViewer: React.FC<ViewerProps> = ({ textsList }) => {
 
     return (
         <Fragment>
-            {textsList.map((text: SingleText, index: number) => {
+            {textsList.map((textInfo: SingleText, index: number) => {
                 return (
-                    <h1 key={index}>{text.title}</h1>
+                    <SingleTextView textInfo={textInfo} key={index}/>
                 )
             })}
         </Fragment>
