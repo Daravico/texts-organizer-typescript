@@ -4,10 +4,9 @@ import { SingleText, FormElement } from "../interfaces/interfaces";
 
 interface NewTextFormProps {
     addingText: (addedText: SingleText) => void;
-    functionx: (num: number) => void;
 }
 
-const NewTextForm: React.FC<NewTextFormProps> = ({ addingText, functionx }) => {
+const NewTextForm: React.FC<NewTextFormProps> = ({ addingText }) => {
 
     // State Hooks for each of the inputs that we have.
     const [title, setTitle] = useState<string>("");
@@ -29,6 +28,7 @@ const NewTextForm: React.FC<NewTextFormProps> = ({ addingText, functionx }) => {
             category: category,
             tags: tags,
         };
+        console.log("Added")
 
         addingText(newText);
     };

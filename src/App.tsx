@@ -9,22 +9,23 @@ import TextsViewer from "./components/TextsViewer";
 // Interfaces
 import { SingleText } from "./interfaces/interfaces";
 
+// Sample
+//import texts from "./samples/texts.json";
+
 const App = (): JSX.Element => {
 
-  const [textList, setTextList] = useState<SingleText[]>([]);
+  const [textsList, setTextList] = useState<SingleText[]>([]);
 
   // NewTextForm Functions.
   // -----------------------------------------------
 
   const addingText = (addedText: SingleText) => {
-    console.log(addedText);
-    console.log("Sip")
+
+    const newTextList: SingleText[] = [...textsList, addedText];
+    setTextList(newTextList);
   };
 
-  const funcionx = (num: number) => {
-    console.log("hola");
-    console.log(num);
-  };
+  
   // -----------------------------------------------
 
   // TextsViewer Functions.
@@ -34,8 +35,8 @@ const App = (): JSX.Element => {
 
   return (
     <Fragment>
-      <NewTextForm addingText={addingText} functionx={funcionx} />
-      <TextsViewer />
+      <NewTextForm addingText={addingText} />
+      <TextsViewer textsList={textsList}/>
     </Fragment>
   );
 };
