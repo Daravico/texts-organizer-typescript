@@ -5,3 +5,4 @@ export interface SingleText {
   tags: string[];
 }
 
+export type FormElement = React.FormEvent<HTMLFormElement>;
