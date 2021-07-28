@@ -35,6 +35,7 @@ const App = (): JSX.Element => {
     <Fragment>
       <NewTextForm addingText={addingText} />
       <TextsViewer textsList={textsList}/>
+
     </Fragment>
   );
 };

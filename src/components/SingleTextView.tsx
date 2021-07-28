@@ -5,15 +5,27 @@ import React from "react";
 import { SingleText } from "../interfaces/interfaces";
 
 // Local interface for PROPS
-interface SingleTextViewProps{
-    textInfo: SingleText
+interface SingleTextViewProps {
+    textInfo: SingleText,
+    idx: number
 
 }
 
-const SingleTextView: React.FC<SingleTextViewProps> = ({textInfo}) => {
+const SingleTextView: React.FC<SingleTextViewProps> = ({ textInfo, idx }) => {
 
-    return(<h1>{textInfo.title}</h1>);
 
-} 
+    const toggle = () => {
+        
+        console.log(idx);
+    }
+
+
+    return (
+        <div>
+            <h1>{textInfo.title}</h1>
+            <button onClick={toggle}>Click</button>
+        </div>);
+
+}
 
 export default SingleTextView;

@@ -18,7 +18,7 @@ const TextsViewer: React.FC<ViewerProps> = ({ textsList }) => {
         <Fragment>
             {textsList.map((textInfo: SingleText, index: number) => {
                 return (
-                    <SingleTextView textInfo={textInfo} key={index}/>
+                    <SingleTextView textInfo={textInfo} key={index} idx={index}/>
                 )
             })}
         </Fragment>
