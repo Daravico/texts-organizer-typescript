@@ -20,7 +20,7 @@ import { SingleText } from "./interfaces/interfaces";
 
 const App = (): JSX.Element => {
 
-  const [textsList, setTextList] = useLocalStorage("textsList",[]);
+  const [textsList, setTextList] = useLocalStorage<SingleText[]> ("textsList", []);
 
   //const [listPrueba, setListPrueba] = useLocalStorage("prueba", []);
 
