@@ -1,8 +1,11 @@
 import React, { Fragment } from "react";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // React Components
+import HomeView from "./components/HomeView";
 import NewTextForm from "./components/newTextForm";
 import TextsViewer from "./components/TextsViewer";
+import TopNav from "./components/TopNav";
 
 // Custom Hooks.
 import { useLocalStorage } from "./custom/useLocalStorage";
@@ -20,7 +23,7 @@ import { SingleText } from "./interfaces/interfaces";
 
 const App = (): JSX.Element => {
 
-  const [textsList, setTextList] = useLocalStorage<SingleText[]> ("textsList", []);
+  const [textsList, setTextList] = useLocalStorage<SingleText[]>("textsList", []);
 
   //const [listPrueba, setListPrueba] = useLocalStorage("prueba", []);
 
@@ -50,19 +53,44 @@ const App = (): JSX.Element => {
       <button onClick={button}>click</button>
   */
 
-  
-  // -----------------------------------------------
-
-  // TextsViewer Functions.
-  // -----------------------------------------------
-
-  // -----------------------------------------------
 
   return (
-    <Fragment>
-      <NewTextForm addingText={addingText} />
-      <TextsViewer textsList={textsList}/>
-    </Fragment>
+    <Router>
+
+      <TopNav/>
+
+      <Switch>
+
+      <Route
+          path="/"
+          exact
+          render={() => (
+            <Fragment>
+              <HomeView />
+            </Fragment>
+          )}
+        />
+
+        <Route
+          path="/new"
+          render={() => (
+            <Fragment>
+              <NewTextForm addingText={addingText} />
+            </Fragment>
+          )}
+        />
+
+        <Route
+          path="/list"
+          render={() => (
+            <Fragment>
+              <TextsViewer textsList={textsList} />
+            </Fragment>
+          )}
+        />
+
+      </Switch>
+    </Router>
   );
 };
 

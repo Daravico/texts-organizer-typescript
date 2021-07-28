@@ -6,6 +6,7 @@ export function useLocalStorage<typeOfData> (key:string, initialValue: typeOfDat
         try{
             const item = window.localStorage.getItem(key);
             return item ? JSON.parse(item): initialValue;
+            //localStorage.clear();
         } catch(error){
             console.log(error);
         }
@@ -17,6 +18,7 @@ export function useLocalStorage<typeOfData> (key:string, initialValue: typeOfDat
         try{
             setStoredValue(value);
             window.localStorage.setItem(key,JSON.stringify(value))
+            
         } catch(error){
             console.log(error)
         }
