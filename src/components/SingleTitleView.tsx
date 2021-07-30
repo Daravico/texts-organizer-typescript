@@ -25,9 +25,9 @@ const SingleTitleView: React.FC<SingleTitleViewProps> = ({
 }) => {
 
     const selectedTextView = () => {
-        setTextViewVisible(!textViewVisible)
-        if (indexOnView === indexTitle && textViewVisible === false) {
-            setTextViewVisible(!textViewVisible)
+
+        if (indexOnView === indexTitle || !textViewVisible) {
+            setTextViewVisible(!textViewVisible);
         }
         setIndexOnView(indexTitle);
         setSelectedText(textInfo);

@@ -24,7 +24,7 @@ const TextsViewer: React.FC<ViewerProps> = ({ textsList }) => {
     //
     const [textViewVisible, setTextViewVisible] = useState<boolean>(false);
     const [selectedText, setSelectedText] = useState<SingleText>(sample);
-    const [indexOnView, setIndexOnView] = useState<number>(-1);
+    const [indexOnView, setIndexOnView] = useState<number>(0);
 
     // Need state for when the specific title is clicked
 
@@ -45,7 +45,7 @@ const TextsViewer: React.FC<ViewerProps> = ({ textsList }) => {
                 );
             })}
 
-            {textViewVisible ? <SingleCardView selectedText={selectedText} /> : <h1>Nothing to show</h1>}
+            {textViewVisible ? <SingleCardView selectedText={selectedText} /> : <h1>:)</h1>}
         </Fragment>
     );
 };
