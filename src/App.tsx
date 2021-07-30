@@ -44,18 +44,17 @@ const App = (): JSX.Element => {
 
 
 
-  /*
+  // Clear the information. Needs to refresh the site.
   const button = () =>{
-    console.log(listPrueba)
+    //console.log(listPrueba)
+    window.localStorage.clear()
   }
-
-  Add this to the return function:
-      <button onClick={button}>click</button>
-  */
 
 
   return (
     <Router>
+
+      <button onClick={button}>CLEAR</button>
 
       <TopNav/>
 

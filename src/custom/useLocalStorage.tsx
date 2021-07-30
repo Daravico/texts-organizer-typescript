@@ -5,8 +5,10 @@ export function useLocalStorage<typeOfData> (key:string, initialValue: typeOfDat
     const [storedValue, setStoredValue] = useState(()=>{
         try{
             const item = window.localStorage.getItem(key);
+            // window.localStorage.clear();
             return item ? JSON.parse(item): initialValue;
-            //localStorage.clear();
+            
+            
         } catch(error){
             console.log(error);
         }
