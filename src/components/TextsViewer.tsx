@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 
 // Interfaces
 import { SingleText } from "../interfaces/interfaces";
@@ -7,46 +7,55 @@ import { SingleText } from "../interfaces/interfaces";
 import SingleTitleView from "./SingleTitleView";
 import SingleCardView from "./SingleCardView";
 
+import { Card, CardGroup } from 'react-bootstrap';
+
+
+
 // Local interface for PROPS
 interface ViewerProps {
     textsList: SingleText[];
 }
 
-//Sample
-const sample: SingleText = {
-    title: "ACH Missing",
-    text: "Sorry to hear",
-    category: "ACH",
-    tags: ["ACH,deposit,withdrawal"],
-};
 
 const TextsViewer: React.FC<ViewerProps> = ({ textsList }) => {
-    //
+
     const [textViewVisible, setTextViewVisible] = useState<boolean>(false);
-    const [selectedText, setSelectedText] = useState<SingleText>(sample);
+    const [selectedText, setSelectedText] = useState<SingleText>(textsList[0]);
     const [indexOnView, setIndexOnView] = useState<number>(0);
 
-    // Need state for when the specific title is clicked
+/*
+    const editText = (key:number) => {
+        console.log(key);
+    }
+  */  
 
     return (
-        <Fragment>
-            {textsList.map((textInfo: SingleText, index: number) => {
-                return (
-                    <SingleTitleView
-                        textInfo={textInfo}
-                        key={index}
-                        indexTitle={index}
-                        textViewVisible={textViewVisible}
-                        setTextViewVisible={setTextViewVisible}
-                        setSelectedText={setSelectedText}
-                        indexOnView={indexOnView}
-                        setIndexOnView={setIndexOnView}
-                    />
-                );
-            })}
+        <CardGroup>
+            
 
-            {textViewVisible ? <SingleCardView selectedText={selectedText} /> : <h1>:)</h1>}
-        </Fragment>
+            <Card className="list-container">
+                {textsList.map((textInfo: SingleText, index: number) => {
+                    return (
+                        <SingleTitleView
+                            textInfo={textInfo}
+                            key={index}
+                            indexTitle={index}
+                            textViewVisible={textViewVisible}
+                            setTextViewVisible={setTextViewVisible}
+                            setSelectedText={setSelectedText}
+                            indexOnView={indexOnView}
+                            setIndexOnView={setIndexOnView}
+                        />
+                    );
+                })}
+            </Card>
+
+            <Card className="single-text">
+                
+                {textViewVisible ? <SingleCardView selectedText={selectedText} /> : null}
+            </Card>
+
+        </CardGroup>
     );
 };
 

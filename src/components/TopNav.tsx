@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
+
 const TopNav = () =>{
 
     return(
-        <nav>
-            Navegations
+        <nav className="nav-bar">
+            <h1>Navegations</h1>
             <br/>
             <Link to='new'>New</Link>
             <br/>

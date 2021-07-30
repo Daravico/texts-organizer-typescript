@@ -1,6 +1,9 @@
 import React, { Fragment } from "react";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+//CSS.
+import "./App.css";
+
 // React Components
 import HomeView from "./components/HomeView";
 import NewTextForm from "./components/newTextForm";

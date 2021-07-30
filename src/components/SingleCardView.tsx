@@ -2,6 +2,8 @@ import React from "react"
 
 import { SingleText } from "../interfaces/interfaces"
 
+import Card from 'react-bootstrap/Card'
+
 
 
 interface cardViewProps {
@@ -11,12 +13,13 @@ interface cardViewProps {
 const SingleCardView: React.FC<cardViewProps> = ({selectedText}) => {
 
     return(
-        <div className="card-view">
-            <h1>{selectedText.title}</h1>
-            <h2>{selectedText.text}</h2>
-            <h2>{selectedText.category}</h2>
+        <Card className="card-view" style={{ width: '18rem' }}>
+            <Card.Title>{selectedText.title}</Card.Title>
+            <Card.Subtitle>{selectedText.category}</Card.Subtitle>
+            <Card.Body>{selectedText.text}</Card.Body>
             
-        </div>
+            
+        </Card>
     )
 }
 
