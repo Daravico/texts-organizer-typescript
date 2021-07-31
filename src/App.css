@@ -8,6 +8,28 @@ body {
   );
 }
 
+
+.selected-title{
+  font-weight: bold;
+  font-size: 40px;
+  border: 10px groove;
+}
+
+
+.selected-text{
+  font-weight: lighter;
+  font-size: 30px;
+  border: 10px groove;
+}
+
+.selected-category{
+  font-size: 35px;
+  font-style: italic;
+  border: 10px groove;
+}
+
+
+
 .nav-bar {
   background-color: rgb(59, 87, 88);
   font: bold;

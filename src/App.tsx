@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 //CSS.
 import "./App.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 // React Components
 import HomeView from "./components/HomeView";

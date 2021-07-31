@@ -2,12 +2,13 @@ import React, { Fragment, useState } from "react";
 
 import { SingleText, FormElement } from "../interfaces/interfaces";
 
+import { Form, Button, Row, Col } from "react-bootstrap";
+
 interface NewTextFormProps {
     addingText: (addedText: SingleText) => void;
 }
 
 const NewTextForm: React.FC<NewTextFormProps> = ({ addingText }) => {
-
     // State Hooks for each of the inputs that we have.
     const [title, setTitle] = useState<string>("");
     const [text, setText] = useState<string>("");
@@ -21,66 +22,93 @@ const NewTextForm: React.FC<NewTextFormProps> = ({ addingText }) => {
         //tagsLine needs to be converted here to an array.
         const tags: string[] = [tagsLine];
 
-        // Saving the information on the form to a new variable (:SingleText).
-        const newText: SingleText = {
-            title: title,
-            text: text,
-            category: category,
-            tags: tags,
-        };
-        console.log("Added")
+        if (title !== "" && text !== "" && category !== "") {
+            // Saving the information on the form to a new variable (:SingleText).
+            const newText: SingleText = {
+                title: title,
+                text: text,
+                category: category,
+                tags: tags,
+            };
 
-        addingText(newText);
+            // Prop function to add the text to the list.
+            addingText(newText);
+        } else {
+            console.log("Something's empty");
+        }
     };
 
     return (
         <Fragment>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    placeholder="Titulo"
-                    value={title}
-                    onChange={(e) => {
-                        setTitle(e.target.value);
-                    }}
-                />
+            <Form onSubmit={handleSubmit}>
+                <Row>
+                    <Form.Label column lg={2}>
+                        Title
+                    </Form.Label>
+                    <Col lg={3}>
+                        <Form.Control
+                            value={title}
+                            placeholder="Title"
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                setTitle(e.target.value);
+                            }}
+                        />
+                    </Col>
+                </Row>
 
-                <br />
+                <Row>
+                    <Form.Label column lg={2}>
+                        Category
+                    </Form.Label>
+                    <Col lg={3}>
+                        <Form.Control
+                            value={category}
+                            placeholder="Category"
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                setCategory(e.target.value);
+                            }}
+                        />
+                    </Col>
+                </Row>
 
-                <textarea
-                    placeholder="Texto"
-                    value={text}
-                    onChange={(e) => {
-                        setText(e.target.value);
-                    }}
-                />
+                <Row>
+                    <Form.Label column lg={2}>
+                        Text
+                    </Form.Label>
+                    <Col lg={3}>
+                        <Form.Control
+                            as="textarea"
+                            value={text}
+                            placeholder="Text"
+                            onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
+                                setText(e.target.value);
+                            }}
+                        />
+                    </Col>
+                </Row>
 
-                <br />
+                <Row>
+                    <Form.Label column lg={2}>
+                        Tags
+                    </Form.Label>
+                    <Col lg={3}>
+                        <Form.Control
+                            value={tagsLine}
+                            placeholder="Tags (Not valid)"
+                            disabled
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                setTagsLine(e.target.value);
+                            }}
+                        />
+                    </Col>
+                </Row>
 
-                <input
-                    type="text"
-                    placeholder="Categoria"
-                    value={category}
-                    onChange={(e) => {
-                        setCategory(e.target.value);
-                    }}
-                />
-
-                <br />
-
-                <input
-                    type="text"
-                    placeholder="Tags"
-                    value={tagsLine}
-                    onChange={(e) => {
-                        setTagsLine(e.target.value);
-                    }}
-                />
-
-                <br />
-
-                <button type="submit">Holis</button>
-            </form>
+                <Col>
+                    <Button variant="primary" type="submit">
+                        Submit
+                    </Button>
+                </Col>
+            </Form>
         </Fragment>
     );
 };
