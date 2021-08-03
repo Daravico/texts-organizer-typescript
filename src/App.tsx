@@ -19,11 +19,7 @@ import { useLocalStorage } from "./custom/useLocalStorage";
 import { SingleText } from "./interfaces/interfaces";
 
 // Samples for testings
-//import texts from "./samples/texts";
-
-//import textsJson from "./samples/textsJson.json"
-//const pruebita: SingleText = textsJson
-//console.log(pruebita)
+import texts from "./samples/textsJson.json";
 
 
 const App = (): JSX.Element => {
@@ -40,26 +36,36 @@ const App = (): JSX.Element => {
 
     const newTextList: SingleText[] = [...textsList, addedText];
     setTextList(newTextList);
-
-    //const prueba:string[] = [...listPrueba, addedText.title];
-    //setListPrueba(prueba);
-
-  };
-
-
+  }
 
 
   // Clear the information. Needs to refresh the site.
-  const button = () =>{
-    //console.log(listPrueba)
+  const clearValues = () => {
     window.localStorage.clear()
   }
+
+  const setValues = () => {
+    window.localStorage.setItem("textsList", JSON.stringify(texts))
+  }
+
+  /*
+  const include = () => {
+    texts.filter((post) => {
+      const postName = post.title.toLocaleLowerCase()
+      console.log(postName)
+      console.log(postName.includes("a"));
+    });
+
+     <button onClick={include}> LOL ? </button>
+  }*/
 
 
   return (
     <Router>
 
-      <button onClick={button}>CLEAR</button>
+      <button onClick={clearValues}>CLEAR</button>
+      <button onClick={setValues}>SET</button>
+     
 
       <TopNav/>
 

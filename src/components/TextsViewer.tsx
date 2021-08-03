@@ -4,8 +4,10 @@ import React, { useState } from "react";
 import { SingleText } from "../interfaces/interfaces";
 
 // React Components.
+import SearchBar from "./SearchBar";
 import SingleTitleView from "./SingleTitleView";
 import SingleCardView from "./SingleCardView";
+
 
 import { Card, CardGroup } from 'react-bootstrap';
 
@@ -20,21 +22,28 @@ interface ViewerProps {
 const TextsViewer: React.FC<ViewerProps> = ({ textsList }) => {
 
     const [textViewVisible, setTextViewVisible] = useState<boolean>(false);
+    
     const [selectedText, setSelectedText] = useState<SingleText>(textsList[0]);
     const [indexOnView, setIndexOnView] = useState<number>(0);
 
-/*
-    const editText = (key:number) => {
-        console.log(key);
-    }
-  */  
+    const [textsListFiltered, setTextsListFiltered] = useState<SingleText[]>(textsList);
+
+
+
 
     return (
         <CardGroup>
-            
+
+
+
 
             <Card className="list-container">
-                {textsList.map((textInfo: SingleText, index: number) => {
+                
+                
+                <SearchBar textsList={textsList} textsListFiltered={textsListFiltered} setTextsListFiltered={setTextsListFiltered} />
+
+
+                {textsListFiltered.map((textInfo: SingleText, index: number) => {
                     return (
                         <SingleTitleView
                             textInfo={textInfo}
@@ -51,7 +60,7 @@ const TextsViewer: React.FC<ViewerProps> = ({ textsList }) => {
             </Card>
 
             <Card className="single-text">
-                
+
                 {textViewVisible ? <SingleCardView selectedText={selectedText} /> : null}
             </Card>
 

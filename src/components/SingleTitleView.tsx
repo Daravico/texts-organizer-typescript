@@ -36,7 +36,7 @@ const SingleTitleView: React.FC<SingleTitleViewProps> = ({
     return (
         <div>
             <h1>{textInfo.title}</h1>
-            <button onClick={selectedTextView}>Open</button>
+            {indexOnView === indexTitle && textViewVisible ? <button onClick={selectedTextView}>Close</button> :  <button onClick={selectedTextView}>Open</button> }
         </div>
     );
 };

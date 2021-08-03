@@ -12,20 +12,19 @@ body {
 .selected-title{
   font-weight: bold;
   font-size: 40px;
-  border: 10px groove;
+
 }
 
 
 .selected-text{
-  font-weight: lighter;
-  font-size: 30px;
-  border: 10px groove;
+  font-weight: normal;
+  font-size: 20px;
+
 }
 
 .selected-category{
   font-size: 35px;
-  font-style: italic;
-  border: 10px groove;
+
 }
 
 
@@ -47,7 +46,3 @@ body {
   width: 25%;
 }
 
-.single-text {
-  background-color: rgb(63, 97, 86);
-  width: 75%;
-}
