@@ -3,6 +3,7 @@ export interface SingleText {
   text: string;
   category: string;
   tags: string[];
+  id: string
 }
 
 export type FormElement = React.FormEvent<HTMLFormElement>;
