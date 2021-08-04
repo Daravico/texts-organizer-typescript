@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 
 // Interfaces
 import { SingleText } from "../interfaces/interfaces";
@@ -11,26 +11,22 @@ interface SearchBarProps {
 
 const SearchBar: React.FC<SearchBarProps> = ({ textsList, setTextsListFiltered }) => {
 
+    /* 
+        Remineder Note: 
+        Reference explicitly declared that this goes to an input HTML Element
+        to prevent type of <string | undefined>. Alternative to this is
+        geting the element by the ID on the method "queryFilter".
+    */
+
+    const selectBoxRef = useRef<HTMLSelectElement | null>(null);
+    const searchBarRef = useRef(document.createElement("input"));
+
 
     // Query that filters the texts list depending on the value on the search bar changes.
     const queryFilter = () => {
-        
-        /*
-            Note: not using states since the delay is not helping on the update being made on time.
-            CONSIDERING THE USAGE OF UseRef, looking at doc
-        */
-
-        // Getting by ID the value of the Select Box.
-        const querySelectBox: string = (document.getElementById("searchTypeSelect") as HTMLSelectElement).value;
-
-        // Query provided in the Search Bar.
-        const queryProvided: string = (document.getElementById("search-bar-text") as HTMLInputElement).value;
-        
-        
-
 
         // When the search bar is empty.
-        if (queryProvided === '') {
+        if (searchBarRef.current?.value === '') {
             setTextsListFiltered(textsList);
         }
 
@@ -39,18 +35,18 @@ const SearchBar: React.FC<SearchBarProps> = ({ textsList, setTextsListFiltered }
             const filterAplied: SingleText[] = textsList.filter((text) => {
 
                 // To lower cases to simplify the search.
-                const queryLower: string = queryProvided.toLowerCase();
+                const queryLower: string = searchBarRef.current.value.toLowerCase();
 
 
                 const titleLower: string = text.title.toLowerCase();
                 const categoryLower: string = text.category.toLowerCase();
                 const textLower: string = text.text.toLowerCase();
 
-                if (querySelectBox === 'Title')
+                if (selectBoxRef.current?.value === 'Title')
                     return titleLower.includes(queryLower);
-                if (querySelectBox === 'Category')
+                if (selectBoxRef.current?.value === 'Category')
                     return categoryLower.includes(queryLower);
-                if (querySelectBox === 'Text')
+                if (selectBoxRef.current?.value === 'Text')
                     return textLower.includes(queryLower);
 
                 else 
@@ -66,7 +62,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ textsList, setTextsListFiltered }
 
     return (
         <div>
-            <select name="searchTypeSelect" id="searchTypeSelect" onChange={queryFilter}>
+            <select name="searchTypeSelect" id="searchTypeSelect" ref={selectBoxRef as React.RefObject<HTMLSelectElement>} onChange={queryFilter}>
                 <option>All</option>
                 <option>Title</option>
                 <option>Text</option>
@@ -74,7 +70,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ textsList, setTextsListFiltered }
 
             </select>
 
-            <input placeholder="Search" id="search-bar-text" onChange={queryFilter} />
+            <input placeholder="Search" id="search-bar-text" ref={searchBarRef as React.RefObject<HTMLInputElement>} onChange={queryFilter} />
         </div>
     )
 
