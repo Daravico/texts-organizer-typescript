@@ -45,7 +45,6 @@ const TextsViewer: React.FC<ViewerProps> = ({ textsList }) => {
                         <SingleTitleView
                             textInfo={textInfo}
                             key={index}
-                            indexTitle={index}
                             textViewVisible={textViewVisible}
                             setTextViewVisible={setTextViewVisible}
                             selectedText={selectedText}

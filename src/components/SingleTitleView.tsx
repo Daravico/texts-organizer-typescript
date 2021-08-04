@@ -6,7 +6,6 @@ import { SingleText } from "../interfaces/interfaces";
 // Local interface for PROPS
 interface SingleTitleViewProps {
     textInfo: SingleText;
-    indexTitle: number;
     textViewVisible: boolean;
     setTextViewVisible: (state: boolean) => void;
     selectedText: SingleText;
@@ -15,7 +14,6 @@ interface SingleTitleViewProps {
 
 const SingleTitleView: React.FC<SingleTitleViewProps> = ({
     textInfo,
-    indexTitle,
     textViewVisible,
     setTextViewVisible,
     selectedText,
