@@ -24,7 +24,6 @@ const TextsViewer: React.FC<ViewerProps> = ({ textsList }) => {
     const [textViewVisible, setTextViewVisible] = useState<boolean>(false);
     
     const [selectedText, setSelectedText] = useState<SingleText>(textsList[0]);
-    const [indexOnView, setIndexOnView] = useState<number>(0);
 
     const [textsListFiltered, setTextsListFiltered] = useState<SingleText[]>(textsList);
 
@@ -33,8 +32,6 @@ const TextsViewer: React.FC<ViewerProps> = ({ textsList }) => {
 
     return (
         <CardGroup>
-
-
 
 
             <Card className="list-container">
@@ -51,9 +48,8 @@ const TextsViewer: React.FC<ViewerProps> = ({ textsList }) => {
                             indexTitle={index}
                             textViewVisible={textViewVisible}
                             setTextViewVisible={setTextViewVisible}
+                            selectedText={selectedText}
                             setSelectedText={setSelectedText}
-                            indexOnView={indexOnView}
-                            setIndexOnView={setIndexOnView}
                         />
                     );
                 })}

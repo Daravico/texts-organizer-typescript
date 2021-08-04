@@ -9,9 +9,8 @@ interface SingleTitleViewProps {
     indexTitle: number;
     textViewVisible: boolean;
     setTextViewVisible: (state: boolean) => void;
+    selectedText: SingleText;
     setSelectedText: (text: SingleText) => void;
-    indexOnView: number;
-    setIndexOnView: (index: number) => void;
 }
 
 const SingleTitleView: React.FC<SingleTitleViewProps> = ({
@@ -19,24 +18,22 @@ const SingleTitleView: React.FC<SingleTitleViewProps> = ({
     indexTitle,
     textViewVisible,
     setTextViewVisible,
+    selectedText,
     setSelectedText,
-    indexOnView,
-    setIndexOnView,
 }) => {
 
     const selectedTextView = () => {
 
-        if (indexOnView === indexTitle || !textViewVisible) {
+        if (selectedText.id === textInfo.id || !textViewVisible) {
             setTextViewVisible(!textViewVisible);
         }
-        setIndexOnView(indexTitle);
         setSelectedText(textInfo);
     };
 
     return (
         <div>
             <h1>{textInfo.title}</h1>
-            {indexOnView === indexTitle && textViewVisible ? <button onClick={selectedTextView}>Close</button> :  <button onClick={selectedTextView}>Open</button> }
+            {selectedText.id === textInfo.id && textViewVisible ? <button onClick={selectedTextView}>Close</button> : <button onClick={selectedTextView}>Open</button>}
         </div>
     );
 };
