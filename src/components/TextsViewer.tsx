@@ -40,7 +40,7 @@ const TextsViewer: React.FC<ViewerProps> = ({ textsList }) => {
             <Card className="list-container">
                 
                 
-                <SearchBar textsList={textsList} textsListFiltered={textsListFiltered} setTextsListFiltered={setTextsListFiltered} />
+                <SearchBar textsList={textsList} setTextsListFiltered={setTextsListFiltered} />
 
 
                 {textsListFiltered.map((textInfo: SingleText, index: number) => {
