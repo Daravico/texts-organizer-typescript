@@ -26,11 +26,11 @@ const TextsViewer: React.FC<ViewerProps> = ({ textsList }) => {
     const [textsListFiltered, setTextsListFiltered] = useState<SingleText[]>(textsList);
 
 
-
+// -------------------------------------------------------------------------------------------------------------------------------------------------
+    // QUERY FILTERING DEPENDING ON THE SEARCH BAR.
     // The Method to filter depending on the query should be here to re-render on different situations:
     // On changes made on the Search Bar, edditing of the selected text or deletion of this.
-
-
+/*
      // Query that filters the texts list depending on the value on the search bar changes.
      const queryFilter = (selectBoxRef: React.MutableRefObject<HTMLSelectElement | null>, searchBarRef: React.MutableRefObject<HTMLInputElement>) => {
 
@@ -45,7 +45,6 @@ const TextsViewer: React.FC<ViewerProps> = ({ textsList }) => {
 
                 // To lower cases to simplify the search.
                 const queryLower: string = searchBarRef.current.value.toLowerCase();
-
 
                 const titleLower: string = text.title.toLowerCase();
                 const categoryLower: string = text.category.toLowerCase();
@@ -65,8 +64,9 @@ const TextsViewer: React.FC<ViewerProps> = ({ textsList }) => {
             // Setting the state with the applied filter.
             setTextsListFiltered(filterAplied);
         }
-
     }
+    */
+// -------------------------------------------------------------------------------------------------------------------------------------------------
 
 
     return (
