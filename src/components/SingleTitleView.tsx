@@ -22,6 +22,8 @@ const SingleTitleView: React.FC<SingleTitleViewProps> = ({
 
     const selectedTextView = () => {
 
+        // Only if the selected Text if different than the first one (Only when initialized)
+        // Or when the selected Text is the same that is being displayed.
         if (selectedText.id === textInfo.id || !textViewVisible) {
             setTextViewVisible(!textViewVisible);
         }
