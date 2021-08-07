@@ -12,6 +12,8 @@ const TopNav = () =>{
             <Link to='new'>New</Link>
             <br/>
             <Link to='List'>List</Link>
+            <br/>
+            <Link to='new-work'>New View</Link>
         </nav>
     )
 

@@ -52,7 +52,7 @@ const TextsViewer: React.FC<ViewerProps> = ({ textsList }) => {
 
             <Card className="single-text">
 
-                {textViewVisible ? <SingleCardView selectedText={selectedText} /> : null}
+                {textViewVisible ? <SingleCardView selectedText={selectedText} textsListFiltered={textsListFiltered} setTextsListFiltered={setTextsListFiltered} /> : null}
             </Card>
 
         </CardGroup>

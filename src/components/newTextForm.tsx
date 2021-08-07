@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from "react";
 
+
 import { SingleText, FormElement } from "../interfaces/interfaces";
 
 import { Form, Button, Row, Col } from "react-bootstrap";
@@ -17,17 +18,11 @@ const NewTextForm: React.FC<NewTextFormProps> = ({ addingText }) => {
     const [title, setTitle] = useState<string>("");
     const [text, setText] = useState<string>("");
     const [category, setCategory] = useState<string>("");
-    const [tagsLine, setTagsLine] = useState<string>("");
 
 
     // Saving the information of the text.
     const handleSubmit = (e: FormElement) => {
         e.preventDefault();
-
-        // < CODE NOT IMPLEMENTED >
-        //tagsLine needs to be converted here to an array.
-        const tags: string[] = [tagsLine];
-        // < CODE NOT IMPLEMENTED >
 
         if (title !== "" && text !== "" && category !== "") {
 
@@ -39,7 +34,6 @@ const NewTextForm: React.FC<NewTextFormProps> = ({ addingText }) => {
                 title: title,
                 text: text,
                 category: category,
-                tags: tags,
                 id: newID
             };
 
@@ -102,22 +96,6 @@ const NewTextForm: React.FC<NewTextFormProps> = ({ addingText }) => {
                             placeholder="Text"
                             onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
                                 setText(e.target.value);
-                            }}
-                        />
-                    </Col>
-                </Row>
-
-                <Row>
-                    <Form.Label column lg={2}>
-                        Tags
-                    </Form.Label>
-                    <Col lg={3}>
-                        <Form.Control
-                            value={tagsLine}
-                            placeholder="Tags (Not valid)"
-                            disabled
-                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                                setTagsLine(e.target.value);
                             }}
                         />
                     </Col>

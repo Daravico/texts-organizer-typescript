@@ -1,29 +1,126 @@
-import React from "react"
+import React, { useState } from "react";
 
-import { SingleText } from "../interfaces/interfaces"
+import { SingleText } from "../interfaces/interfaces";
 
-import { Card, Button } from 'react-bootstrap/'
-
-
+import { Button } from "react-bootstrap/";
 
 interface cardViewProps {
-    selectedText: SingleText
+    selectedText: SingleText;
+    textsListFiltered: SingleText[];
+    setTextsListFiltered: (texts: SingleText[]) => void
 }
 
-const SingleCardView: React.FC<cardViewProps> = ({selectedText}) => {
+// ####################################################
+// Tengo que traer la lista filtrada y la variable para set it
+// ####################################################
 
-    return(
-        <Card className="card-view" >
-            <Card.Title className="selected-title">{selectedText.title}</Card.Title>
-            <Card.Subtitle className="selected-category">{selectedText.category}</Card.Subtitle>
-            <Card.Body className="selected-text">{selectedText.text}</Card.Body>
+const SingleCardView: React.FC<cardViewProps> = ({ selectedText, textsListFiltered, setTextsListFiltered }) => {
+    const [editState, setEditState] = useState<boolean>(false);
+    const [preDelete, setPreDelete] = useState<boolean>(false);
 
-        <Button> Edit </Button>
-        <Button> Delete </Button>
-        <Button> Clipboard </Button>
 
-        </Card>
-    )
-}
+    const [titleOnEdition, setTitleOnEdition] = useState<string>(selectedText.title);
+    const [categoryOnEdition, setCategoryOnEdition] = useState<string>(selectedText.category);
+    const [textOnEdition, setTextOnEdition] = useState<string>(selectedText.text);
+
+
+    const editionConfirmation = () => {
+        setEditState(false);
+
+        const postEditedList: SingleText[] = textsListFiltered.filter( (text) => {
+            
+            if (text.id === selectedText.id) {
+
+                text.title = titleOnEdition;
+                text.category = categoryOnEdition;
+                text.text = textOnEdition;
+            }
+
+            return text;
+        });
+
+        setTextsListFiltered(postEditedList);
+
+     };
+
+    const deletionProcess = () => {
+        setPreDelete(false);
+        setEditState(false);
+    };
+
+    return (
+        <div className="card-view">
+
+            {!editState ? (
+                <div>
+                    <h1 className="selected-title">{selectedText.title}</h1>
+                    <h2 className="selected-category">{selectedText.category}</h2>
+                    <h3 className="selected-text">{selectedText.text}</h3>
+                </div>
+
+            ) : (
+
+                <div>
+                    <input defaultValue={titleOnEdition} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                        setTitleOnEdition(e.target.value);
+                    }} />
+                    <input defaultValue={categoryOnEdition} onChange={(e:React.ChangeEvent<HTMLInputElement>) => {
+                        setCategoryOnEdition(e.target.value);
+                    }} />
+                    <br />
+                    <textarea defaultValue={textOnEdition} onChange={(e:React.ChangeEvent<HTMLTextAreaElement>) =>{
+                        setTextOnEdition(e.target.value);
+                    }} />
+                    <br />
+                    <Button variant="success" onClick={editionConfirmation}> CONFIRM EDITION </Button>
+                </div>
+
+            )}
+
+
+            {editState ? (
+                <Button variant="secondary"
+                    onClick={() => {
+                        setEditState(false);
+                        setPreDelete(false);
+                        setTitleOnEdition(selectedText.title);
+                        setCategoryOnEdition(selectedText.category);
+                        setTextOnEdition(selectedText.text);
+                    }}
+                >
+                    {" "}
+                    Cancel edition{" "}
+                </Button>
+            ) : (
+                <Button
+                    onClick={() => {
+                        setEditState(true);
+                        setPreDelete(false);
+                    }}
+                >
+                    {" "}
+                    NOT EDITING{" "}
+                </Button>
+            )}
+
+
+
+            {preDelete ? (
+                <Button variant="danger" onClick={deletionProcess}> Sure? </Button>
+            ) : (
+                <Button variant="warning"
+                    onClick={() => {
+                        setPreDelete(true);
+                        setEditState(false);
+                    }}
+                >
+                    Delete
+                </Button>
+            )}
+
+            {!editState && !preDelete ? <Button variant="info"> Clipboard </Button> : null}
+        </div>
+    );
+};
 
 export default SingleCardView;

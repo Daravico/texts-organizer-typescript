@@ -12,6 +12,9 @@ import NewTextForm from "./components/newTextForm";
 import TextsViewer from "./components/TextsViewer";
 import TopNav from "./components/TopNav";
 
+// New Components.
+import CategoriesView from "./categories/categoriesView";
+
 // Custom Hooks.
 import { useLocalStorage } from "./custom/useLocalStorage";
 
@@ -25,8 +28,6 @@ import texts from "./samples/textsJson.json";
 const App = (): JSX.Element => {
 
   const [textsList, setTextList] = useLocalStorage<SingleText[]>("textsList", []);
-
-  //const [listPrueba, setListPrueba] = useLocalStorage("prueba", []);
 
 
   // NewTextForm Functions.
@@ -48,16 +49,6 @@ const App = (): JSX.Element => {
     window.localStorage.setItem("textsList", JSON.stringify(texts))
   }
 
-  /*
-  const include = () => {
-    texts.filter((post) => {
-      const postName = post.title.toLocaleLowerCase()
-      console.log(postName)
-      console.log(postName.includes("a"));
-    });
-
-     <button onClick={include}> LOL ? </button>
-  }*/
 
 
   return (
@@ -97,6 +88,18 @@ const App = (): JSX.Element => {
               <TextsViewer textsList={textsList} />
             </Fragment>
           )}
+        />
+
+
+        <Route
+          path="/new-work"
+          render={() => (
+          <Fragment>
+            <CategoriesView textsList={textsList} />
+          </Fragment>
+          )}
+        
+        
         />
 
       </Switch>
