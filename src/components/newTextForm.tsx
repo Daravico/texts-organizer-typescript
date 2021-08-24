@@ -6,6 +6,11 @@ import { SingleText, FormElement } from "../interfaces/interfaces";
 import { Form, Button, Row, Col } from "react-bootstrap";
 
 import { v4 as uuidv4 } from 'uuid';
+import CreatableSelect from 'react-select/creatable';
+
+// Custom Hooks.
+import { useLocalStorage } from "../custom/useLocalStorage";
+
 
 
 interface NewTextFormProps {
@@ -13,11 +18,13 @@ interface NewTextFormProps {
 }
 
 const NewTextForm: React.FC<NewTextFormProps> = ({ addingText }) => {
-    
+
     // State Hooks for each of the inputs that we have.
     const [title, setTitle] = useState<string>("");
     const [text, setText] = useState<string>("");
     const [category, setCategory] = useState<string>("");
+
+    const [savedCategories, setSavedCategories] = useLocalStorage<object>("categories",[{ "value": 'Uncategorizable', "label": 'Uncategorizable' }]);
 
 
     // Saving the information of the text.
@@ -43,7 +50,7 @@ const NewTextForm: React.FC<NewTextFormProps> = ({ addingText }) => {
             setCategory("");
 
 
-            
+
 
             // Prop function to add the text to the list.
             addingText(newText);
@@ -82,6 +89,15 @@ const NewTextForm: React.FC<NewTextFormProps> = ({ addingText }) => {
                                 setCategory(e.target.value);
                             }}
                         />
+
+
+                        <CreatableSelect
+                            isClearable
+                            defaultValue={{ "value": 'Uncategorizable', "label": 'Uncategorizable' }}
+                            options={savedCategories}
+
+                        />
+
                     </Col>
                 </Row>
 

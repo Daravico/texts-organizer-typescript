@@ -1,6 +1,10 @@
 import React from "react";
 
+import CreatableSelect from 'react-select/creatable';
+
 import { SingleText } from "../interfaces/interfaces";
+
+
 
 // Local interface for PROPS
 interface CategoriesProps {
@@ -11,7 +15,7 @@ const CategoriesView: React.FC<CategoriesProps> = ({textsList}) => {
 
     return(
         <div>
-            Hola
+            <CreatableSelect isClearable></CreatableSelect>
         </div>
     )
 
