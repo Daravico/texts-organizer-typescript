@@ -1,3 +1,8 @@
+/* 
+    Visible Top Navigation Bar that is uses to switch between modes easily.
+*/
+
+
 import React from "react";
 import { Link } from "react-router-dom";
 

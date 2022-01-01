@@ -31,11 +31,16 @@ const SingleTitleView: React.FC<SingleTitleViewProps> = ({
     };
 
     return (
-        <div>
-            <h1>{textInfo.title}</h1>
-            {selectedText.id === textInfo.id && textViewVisible ? <button onClick={selectedTextView}>Close</button> : <button onClick={selectedTextView}>Open</button>}
+        <div onClick={selectedTextView}>
+            
+            {selectedText.id === textInfo.id && textViewVisible ? <h3>{textInfo.title}</h3> : <h4>{textInfo.title}</h4>}
+            
         </div>
     );
 };
 
 export default SingleTitleView;
+
+
+// <h4>{textInfo.title}</h4>
+// {selectedText.id === textInfo.id && textViewVisible ? <button onClick={selectedTextView}>Close</button> : <button onClick={selectedTextView}>Open</button>}

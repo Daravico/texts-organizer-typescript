@@ -43,10 +43,12 @@ const App = (): JSX.Element => {
   // Clear the information. Needs to refresh the site.
   const clearValues = () => {
     window.localStorage.clear()
+    window.location.reload()
   }
 
   const setValues = () => {
     window.localStorage.setItem("textsList", JSON.stringify(texts))
+    window.location.reload()
   }
 
 

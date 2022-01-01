@@ -1,3 +1,8 @@
+/* 
+    Layout to input new information in the system. 
+*/
+
+
 import React, { Fragment, useState } from "react";
 
 

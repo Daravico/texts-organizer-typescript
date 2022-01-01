@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+
 // Interfaces
 import { SingleText } from "../interfaces/interfaces";
 
@@ -9,7 +10,7 @@ import SingleTitleView from "./SingleTitleView";
 import SingleCardView from "./SingleCardView";
 
 
-import { Card, CardGroup } from 'react-bootstrap';
+import { Card, CardGroup, ListGroup } from 'react-bootstrap';
 
 
 
@@ -21,6 +22,9 @@ interface ViewerProps {
 
 const TextsViewer: React.FC<ViewerProps> = ({ textsList }) => {
 
+    // TextViewVisible is active when a text is selected.
+    // selectedText gathers the information on the selected text.
+    // textsListFiltered is the actual displayed texts titles that ar already filtered by the Search Bar.
     const [textViewVisible, setTextViewVisible] = useState<boolean>(false);
     const [selectedText, setSelectedText] = useState<SingleText>(textsList[0])
     const [textsListFiltered, setTextsListFiltered] = useState<SingleText[]>(textsList);
@@ -31,10 +35,8 @@ const TextsViewer: React.FC<ViewerProps> = ({ textsList }) => {
         <CardGroup>
 
             <Card className="list-container">
-                
-                
-                <SearchBar textsList={textsList} setTextsListFiltered={setTextsListFiltered} />
 
+                <SearchBar textsList={textsList} setTextsListFiltered={setTextsListFiltered} />
 
                 {textsListFiltered.map((textInfo: SingleText, index: number) => {
                     return (
@@ -48,11 +50,16 @@ const TextsViewer: React.FC<ViewerProps> = ({ textsList }) => {
                         />
                     );
                 })}
+
+
             </Card>
 
             <Card className="single-text">
 
-                {textViewVisible ? <SingleCardView selectedText={selectedText} textsListFiltered={textsListFiltered} setTextsListFiltered={setTextsListFiltered} /> : null}
+                {textViewVisible ? <SingleCardView
+                    selectedText={selectedText}
+                    textsListFiltered={textsListFiltered}
+                    setTextsListFiltered={setTextsListFiltered} /> : null}
             </Card>
 
         </CardGroup>
