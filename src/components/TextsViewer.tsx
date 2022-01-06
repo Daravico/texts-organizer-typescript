@@ -9,7 +9,7 @@ import SearchBar from "./SearchBar";
 import SingleTitleView from "./SingleTitleView";
 import SingleCardView from "./SingleCardView";
 
-
+// Bootstrap imports.
 import { Card, CardGroup, ListGroup } from 'react-bootstrap';
 
 
@@ -32,11 +32,11 @@ const TextsViewer: React.FC<ViewerProps> = ({ textsList }) => {
 
 
     return (
-        <CardGroup>
+        <div>
+            
+            <SearchBar textsList={textsList} setTextsListFiltered={setTextsListFiltered} />
 
-            <Card className="list-container">
-
-                <SearchBar textsList={textsList} setTextsListFiltered={setTextsListFiltered} />
+            <ListGroup>
 
                 {textsListFiltered.map((textInfo: SingleText, index: number) => {
                     return (
@@ -52,17 +52,17 @@ const TextsViewer: React.FC<ViewerProps> = ({ textsList }) => {
                 })}
 
 
-            </Card>
+            </ListGroup>
 
-            <Card className="single-text">
+            <div className="single-text">
 
                 {textViewVisible ? <SingleCardView
                     selectedText={selectedText}
                     textsListFiltered={textsListFiltered}
                     setTextsListFiltered={setTextsListFiltered} /> : null}
-            </Card>
+            </div>
 
-        </CardGroup>
+        </div>
     );
 };
 
