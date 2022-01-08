@@ -10,7 +10,7 @@ import SingleTitleView from "./SingleTitleView";
 import SingleCardView from "./SingleCardView";
 
 // Bootstrap imports.
-import { Card, CardGroup, ListGroup } from 'react-bootstrap';
+import { Card, ListGroup } from 'react-bootstrap';
 
 
 
@@ -36,7 +36,7 @@ const TextsViewer: React.FC<ViewerProps> = ({ textsList }) => {
             
             <SearchBar textsList={textsList} setTextsListFiltered={setTextsListFiltered} />
 
-            <ListGroup>
+            <ListGroup id="list-container">
 
                 {textsListFiltered.map((textInfo: SingleText, index: number) => {
                     return (
@@ -54,13 +54,13 @@ const TextsViewer: React.FC<ViewerProps> = ({ textsList }) => {
 
             </ListGroup>
 
-            <div className="single-text">
+            <Card className="single-text">
 
                 {textViewVisible ? <SingleCardView
                     selectedText={selectedText}
                     textsListFiltered={textsListFiltered}
                     setTextsListFiltered={setTextsListFiltered} /> : null}
-            </div>
+            </Card>
 
         </div>
     );

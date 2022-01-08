@@ -41,8 +41,10 @@ body {
   background-color: black;
 }
 
-.list-container {
+#list-container {
   background-color: rgb(152, 88, 211);
   width: 25%;
+  overflow-y: scroll;
+  height: 40vh;
 }
 
