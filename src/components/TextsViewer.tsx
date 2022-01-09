@@ -32,7 +32,7 @@ const TextsViewer: React.FC<ViewerProps> = ({ textsList }) => {
 
 
     return (
-        <div>
+        <div id="wrapper_texts">
             
             <SearchBar textsList={textsList} setTextsListFiltered={setTextsListFiltered} />
 
@@ -54,7 +54,7 @@ const TextsViewer: React.FC<ViewerProps> = ({ textsList }) => {
 
             </ListGroup>
 
-            <Card className="single-text">
+            <Card id="single-text">
 
                 {textViewVisible ? <SingleCardView
                     selectedText={selectedText}

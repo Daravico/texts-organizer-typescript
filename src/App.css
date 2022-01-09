@@ -41,10 +41,25 @@ body {
   background-color: black;
 }
 
+
+#wrapper_texts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: minmax(100px, auto);
+
+
+}
+
+
 #list-container {
   background-color: rgb(152, 88, 211);
+  grid-column: 1/2;
   width: 25%;
   overflow-y: scroll;
   height: 40vh;
 }
 
+#single-text {
+  grid-column: 2/2;
+
+}
