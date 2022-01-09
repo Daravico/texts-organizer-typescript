@@ -61,5 +61,5 @@ body {
 
 #single-text {
   grid-column: 2/2;
-
+  white-space: pre-line;
 }
