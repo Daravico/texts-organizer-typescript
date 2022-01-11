@@ -5,12 +5,12 @@
 
 import React, { Fragment, useState } from "react";
 
-
 import { SingleText, FormElement } from "../interfaces/interfaces";
 
 import { Form, Button, Row, Col } from "react-bootstrap";
 
 import { v4 as uuidv4 } from 'uuid';
+
 import CreatableSelect from 'react-select/creatable';
 
 // Custom Hooks.
@@ -29,14 +29,20 @@ const NewTextForm: React.FC<NewTextFormProps> = ({ addingText }) => {
     const [text, setText] = useState<string>("");
     const [category, setCategory] = useState<string>("");
 
-    const [savedCategories, setSavedCategories] = useLocalStorage<object>("categories",[{ "value": 'Uncategorizable', "label": 'Uncategorizable' }]);
+    const [savedCategories, setSavedCategories] = useLocalStorage<object>("categories", [{ "value": 'Uncategorizable', "label": 'Uncategorizable' }]);
 
+
+    // Function to update the list of the categories when a new one is added and submitted.
+    const updateCategories = {
+
+    }
 
     // Saving the information of the text.
     const handleSubmit = (e: FormElement) => {
+        
         e.preventDefault();
 
-        if (title !== "" && text !== "" && category !== "") {
+        if (title !== "" && text !== "" && category !== ""){
 
             // ID for unique identifier.
             const newID: string = uuidv4();
@@ -55,8 +61,6 @@ const NewTextForm: React.FC<NewTextFormProps> = ({ addingText }) => {
             setCategory("");
 
 
-
-
             // Prop function to add the text to the list.
             addingText(newText);
         } else {
@@ -68,9 +72,11 @@ const NewTextForm: React.FC<NewTextFormProps> = ({ addingText }) => {
         <Fragment>
             <Form onSubmit={handleSubmit}>
                 <Row>
+
                     <Form.Label column lg={2}>
                         Title
                     </Form.Label>
+                    
                     <Col lg={3}>
                         <Form.Control
                             value={title}
@@ -83,9 +89,11 @@ const NewTextForm: React.FC<NewTextFormProps> = ({ addingText }) => {
                 </Row>
 
                 <Row>
+
                     <Form.Label column lg={2}>
                         Category
                     </Form.Label>
+
                     <Col lg={3}>
                         <Form.Control
                             value={category}
@@ -100,7 +108,8 @@ const NewTextForm: React.FC<NewTextFormProps> = ({ addingText }) => {
                             isClearable
                             defaultValue={{ "value": 'Uncategorizable', "label": 'Uncategorizable' }}
                             options={savedCategories}
-
+                            
+                            
                         />
 
                     </Col>

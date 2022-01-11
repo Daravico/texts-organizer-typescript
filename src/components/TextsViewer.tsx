@@ -15,12 +15,12 @@ import { Card, ListGroup } from 'react-bootstrap';
 
 
 // Local interface for PROPS
-interface ViewerProps {
+interface textsViewerProps {
     textsList: SingleText[];
 }
 
 
-const TextsViewer: React.FC<ViewerProps> = ({ textsList }) => {
+const TextsViewer: React.FC<textsViewerProps> = ({ textsList }) => {
 
     // TextViewVisible is active when a text is selected.
     // selectedText gathers the information on the selected text.
@@ -58,6 +58,7 @@ const TextsViewer: React.FC<ViewerProps> = ({ textsList }) => {
 
                 {textViewVisible ? <SingleCardView
                     selectedText={selectedText}
+                    setSelectedText={setSelectedText}
                     textsListFiltered={textsListFiltered}
                     setTextsListFiltered={setTextsListFiltered} /> : null}
             </Card>
