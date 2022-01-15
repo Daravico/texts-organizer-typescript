@@ -28,6 +28,8 @@ const TextsViewer: React.FC<textsViewerProps> = ({ textsList }) => {
     const [textViewVisible, setTextViewVisible] = useState<boolean>(false);
     const [selectedText, setSelectedText] = useState<SingleText>(textsList[0])
     const [textsListFiltered, setTextsListFiltered] = useState<SingleText[]>(textsList);
+    
+    const [editableText, setEditableText] = useState<string>('');
 
 
 
@@ -47,6 +49,7 @@ const TextsViewer: React.FC<textsViewerProps> = ({ textsList }) => {
                             setTextViewVisible={setTextViewVisible}
                             selectedText={selectedText}
                             setSelectedText={setSelectedText}
+                            setEditableText={setEditableText}
                         />
                     );
                 })}
@@ -60,7 +63,10 @@ const TextsViewer: React.FC<textsViewerProps> = ({ textsList }) => {
                     selectedText={selectedText}
                     setSelectedText={setSelectedText}
                     textsListFiltered={textsListFiltered}
-                    setTextsListFiltered={setTextsListFiltered} /> : null}
+                    setTextsListFiltered={setTextsListFiltered}
+                    editableText={editableText}
+                    setEditableText={setEditableText} 
+                /> : null}
             </Card>
 
         </div>

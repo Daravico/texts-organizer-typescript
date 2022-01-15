@@ -14,6 +14,7 @@ interface SingleTitleViewProps {
     setTextViewVisible: (state: boolean) => void;
     selectedText: SingleText;
     setSelectedText: (text: SingleText) => void;
+    setEditableText: (editableText: string) => void;
 }
 
 const SingleTitleView: React.FC<SingleTitleViewProps> = ({
@@ -22,6 +23,7 @@ const SingleTitleView: React.FC<SingleTitleViewProps> = ({
     setTextViewVisible,
     selectedText,
     setSelectedText,
+    setEditableText
 }) => {
 
     const selectedTextView = () => {
@@ -32,6 +34,7 @@ const SingleTitleView: React.FC<SingleTitleViewProps> = ({
             setTextViewVisible(!textViewVisible);
         }
         setSelectedText(textInfo);
+        setEditableText(textInfo.text);
     };
 
     return (
@@ -39,23 +42,9 @@ const SingleTitleView: React.FC<SingleTitleViewProps> = ({
             {selectedText.id === textInfo.id && textViewVisible ?
                 <ListGroup.Item action variant="dark" onClick={selectedTextView}> {textInfo.title} </ListGroup.Item> :
                 <ListGroup.Item action variant="light" onClick={selectedTextView}> {textInfo.title} </ListGroup.Item>
-                }
+            }
         </div>
     );
 };
 
 export default SingleTitleView;
-
-
-// <h4>{textInfo.title}</h4>
-// {selectedText.id === textInfo.id && textViewVisible ? <button onClick={selectedTextView}>Close</button> : <button onClick={selectedTextView}>Open</button>}
-
-/*
-return (
-    <ListGroup.Item action onClick={selectedTextView}>
-        
-        {selectedText.id === textInfo.id && textViewVisible ? <h3>{textInfo.title}</h3> : <h4>{textInfo.title}</h4>}
-        
-    </ListGroup.Item>
-);
-*/
