@@ -20,10 +20,13 @@ interface cardViewProps {
 // ####################################################
 
 const SingleCardView: React.FC<cardViewProps> = ({ selectedText, setSelectedText, textsListFiltered, setTextsListFiltered, editableText, setEditableText }) => {
+    
+    // STATES THAT NEED TO BE PLACED ON A HIGER LEVEL
+    // °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
     const [editState, setEditState] = useState<boolean>(false);
     const [preDelete, setPreDelete] = useState<boolean>(false);
+    // °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 
-    //const [localText, setLocalText] = useState<string>(selectedText.text.replace('_agentname_','David'));
     const [titleOnEdition, setTitleOnEdition] = useState<string>(selectedText.title);
     const [categoryOnEdition, setCategoryOnEdition] = useState<string>(selectedText.category);
     const [textOnEdition, setTextOnEdition] = useState<string>(selectedText.text);
@@ -55,10 +58,6 @@ const SingleCardView: React.FC<cardViewProps> = ({ selectedText, setSelectedText
 
     return (
         <div className="card-view">
-
-            <input onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                setEditableText(selectedText.text.replace('_username_', e.target.value));
-            }} />
 
             {!editState ? (
                 <div>

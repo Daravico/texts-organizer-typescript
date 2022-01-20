@@ -11,10 +11,10 @@ import { Form, Button, Row, Col } from "react-bootstrap";
 
 import { v4 as uuidv4 } from 'uuid';
 
-import CreatableSelect from 'react-select/creatable';
+// import CreatableSelect from 'react-select/creatable';
 
 // Custom Hooks.
-import { useLocalStorage } from "../custom/useLocalStorage";
+// import { useLocalStorage } from "../custom/useLocalStorage";
 
 
 
@@ -27,7 +27,14 @@ const NewTextForm: React.FC<NewTextFormProps> = ({ addingText }) => {
     // State Hooks for each of the inputs that we have.
     const [title, setTitle] = useState<string>("");
     const [text, setText] = useState<string>("");
-    const [category, setCategory] = useState<string>("");
+    const [category, setCategory] = useState<string>("uncategorized");
+
+    
+    /*
+    
+    // -----------------------------------------------
+    // Probably will be adding the category in the future or it will be entirely removed. 
+    // -----------------------------------------------
 
     const [savedCategories, setSavedCategories] = useLocalStorage<object>("categories", [{ "value": 'Uncategorizable', "label": 'Uncategorizable' }]);
 
@@ -36,6 +43,7 @@ const NewTextForm: React.FC<NewTextFormProps> = ({ addingText }) => {
     const updateCategories = {
 
     }
+    */
 
     // Saving the information of the text.
     const handleSubmit = (e: FormElement) => {
@@ -63,6 +71,7 @@ const NewTextForm: React.FC<NewTextFormProps> = ({ addingText }) => {
 
             // Prop function to add the text to the list.
             addingText(newText);
+
         } else {
             console.log("Something's empty");
         }
@@ -88,32 +97,7 @@ const NewTextForm: React.FC<NewTextFormProps> = ({ addingText }) => {
                     </Col>
                 </Row>
 
-                <Row>
-
-                    <Form.Label column lg={2}>
-                        Category
-                    </Form.Label>
-
-                    <Col lg={3}>
-                        <Form.Control
-                            value={category}
-                            placeholder="Category"
-                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                                setCategory(e.target.value);
-                            }}
-                        />
-
-
-                        <CreatableSelect
-                            isClearable
-                            defaultValue={{ "value": 'Uncategorizable', "label": 'Uncategorizable' }}
-                            options={savedCategories}
-                            
-                            
-                        />
-
-                    </Col>
-                </Row>
+                
 
                 <Row>
                     <Form.Label column lg={2}>
@@ -142,3 +126,41 @@ const NewTextForm: React.FC<NewTextFormProps> = ({ addingText }) => {
 };
 
 export default NewTextForm;
+
+
+
+
+
+
+
+/*
+
+// -------------------------------------
+// Category being removed. 
+// -------------------------------------
+
+<Row>
+
+                    <Form.Label column lg={2}>
+                        Category
+                    </Form.Label>
+
+                    <Col lg={3}>
+                        <Form.Control
+                            value={category}
+                            placeholder="Category"
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                setCategory(e.target.value);
+                            }}
+                        />
+
+
+                        <CreatableSelect
+                            isClearable
+                            defaultValue={{ "value": 'Uncategorizable', "label": 'Uncategorizable' }}
+                            options={[]}
+                        />
+
+                    </Col>
+                </Row>
+*/

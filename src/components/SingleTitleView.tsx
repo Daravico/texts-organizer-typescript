@@ -10,11 +10,16 @@ import { ListGroup } from 'react-bootstrap';
 // Local interface for PROPS
 interface SingleTitleViewProps {
     textInfo: SingleText;
+    
     textViewVisible: boolean;
     setTextViewVisible: (state: boolean) => void;
+    
     selectedText: SingleText;
     setSelectedText: (text: SingleText) => void;
+    
     setEditableText: (editableText: string) => void;
+    
+    userName: string
 }
 
 const SingleTitleView: React.FC<SingleTitleViewProps> = ({
@@ -23,7 +28,8 @@ const SingleTitleView: React.FC<SingleTitleViewProps> = ({
     setTextViewVisible,
     selectedText,
     setSelectedText,
-    setEditableText
+    setEditableText,
+    userName
 }) => {
 
     const selectedTextView = () => {
@@ -35,6 +41,11 @@ const SingleTitleView: React.FC<SingleTitleViewProps> = ({
         }
         setSelectedText(textInfo);
         setEditableText(textInfo.text);
+
+        if (userName !== '')
+        {
+            setEditableText(textInfo.text.replace('_username_', userName));
+        }
     };
 
     return (

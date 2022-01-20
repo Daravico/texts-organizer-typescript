@@ -39,18 +39,16 @@ const SearchBar: React.FC<SearchBarProps> = ({ textsList, setTextsListFiltered }
 
 
                 const titleLower: string = text.title.toLowerCase();
-                const categoryLower: string = text.category.toLowerCase();
                 const textLower: string = text.text.toLowerCase();
 
                 if (selectBoxRef.current?.value === 'Title')
                     return titleLower.includes(queryLower);
-                if (selectBoxRef.current?.value === 'Category')
-                    return categoryLower.includes(queryLower);
+
                 if (selectBoxRef.current?.value === 'Text')
                     return textLower.includes(queryLower);
 
                 else 
-                    return titleLower.includes(queryLower) || categoryLower.includes(queryLower) || textLower.includes(queryLower);
+                    return titleLower.includes(queryLower) || textLower.includes(queryLower);
             });
 
             // Setting the state with the applied filter.
@@ -63,10 +61,8 @@ const SearchBar: React.FC<SearchBarProps> = ({ textsList, setTextsListFiltered }
     return (
         <div>
             <select name="searchTypeSelect" id="searchTypeSelect" ref={selectBoxRef as React.RefObject<HTMLSelectElement>} onChange={queryFilter}>
-                <option>All</option>
                 <option>Title</option>
                 <option>Text</option>
-                <option>Category</option>
 
             </select>
 

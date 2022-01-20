@@ -30,6 +30,7 @@ const TextsViewer: React.FC<textsViewerProps> = ({ textsList }) => {
     const [textsListFiltered, setTextsListFiltered] = useState<SingleText[]>(textsList);
     
     const [editableText, setEditableText] = useState<string>('');
+    const [userName, setUserName] = useState<string>('');
 
 
 
@@ -37,6 +38,16 @@ const TextsViewer: React.FC<textsViewerProps> = ({ textsList }) => {
         <div id="wrapper_texts">
             
             <SearchBar textsList={textsList} setTextsListFiltered={setTextsListFiltered} />
+
+            <input onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                setUserName(e.target.value);
+                if(e.target.value !== ''){
+                    setEditableText(selectedText.text.replace('_username_', e.target.value));
+                }
+                else{
+                    setEditableText(selectedText.text);
+                }                
+            }} />
 
             <ListGroup id="list-container">
 
@@ -50,6 +61,7 @@ const TextsViewer: React.FC<textsViewerProps> = ({ textsList }) => {
                             selectedText={selectedText}
                             setSelectedText={setSelectedText}
                             setEditableText={setEditableText}
+                            userName={userName}
                         />
                     );
                 })}
