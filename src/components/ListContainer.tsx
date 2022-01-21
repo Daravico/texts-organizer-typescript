@@ -20,7 +20,7 @@ interface textsViewerProps {
 }
 
 
-const TextsViewer: React.FC<textsViewerProps> = ({ textsList }) => {
+const ListContainer: React.FC<textsViewerProps> = ({ textsList }) => {
 
     // TextViewVisible is active when a text is selected.
     // selectedText gathers the information on the selected text.
@@ -85,4 +85,4 @@ const TextsViewer: React.FC<textsViewerProps> = ({ textsList }) => {
     );
 };
 
-export default TextsViewer;
+export default ListContainer;

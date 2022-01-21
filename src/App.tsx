@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // React Components
 import HomeView from "./components/HomeView";
 import NewTextForm from "./components/newTextForm";
-import TextsViewer from "./components/TextsViewer";
+import ListContainer from "./components/ListContainer";
 import TopNav from "./components/TopNav";
 
 // New Components.
@@ -87,7 +87,7 @@ const App = (): JSX.Element => {
           path="/list"
           render={() => (
             <Fragment>
-              <TextsViewer textsList={textsList} />
+              <ListContainer textsList={textsList} />
             </Fragment>
           )}
         />
