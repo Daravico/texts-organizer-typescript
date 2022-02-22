@@ -13,18 +13,25 @@ interface cardViewProps {
 
     editableText: string;
     setEditableText: (editText: string) => void
+
+    editState: boolean;
+    setEditState: (edit: boolean) => void
+
+    preDelete: boolean;
+    setPreDelete: (deleteState: boolean) => void
 }
 
 // ####################################################
 // Tengo que traer la lista filtrada y la variable para set it
 // ####################################################
 
-const SingleCardView: React.FC<cardViewProps> = ({ selectedText, setSelectedText, textsListFiltered, setTextsListFiltered, editableText, setEditableText }) => {
-    
+const SingleCardView: React.FC<cardViewProps> = (
+    { selectedText, setSelectedText, textsListFiltered, setTextsListFiltered, editableText, setEditableText, editState, setEditState, preDelete, setPreDelete }) => {
+
     // STATES THAT NEED TO BE PLACED ON A HIGER LEVEL
     // °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
-    const [editState, setEditState] = useState<boolean>(false);
-    const [preDelete, setPreDelete] = useState<boolean>(false);
+    //const [editState, setEditState] = useState<boolean>(false);
+    //const [preDelete, setPreDelete] = useState<boolean>(false);
     // °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 
     const [titleOnEdition, setTitleOnEdition] = useState<string>(selectedText.title);

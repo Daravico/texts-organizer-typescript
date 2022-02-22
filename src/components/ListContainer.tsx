@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-
 // Interfaces
 import { SingleText } from "../interfaces/interfaces";
 
@@ -26,12 +25,16 @@ const ListContainer: React.FC<textsViewerProps> = ({ textsList }) => {
     // selectedText gathers the information on the selected text.
     // textsListFiltered is the actual displayed texts titles that ar already filtered by the Search Bar.
     const [textViewVisible, setTextViewVisible] = useState<boolean>(false);
-    const [selectedText, setSelectedText] = useState<SingleText>(textsList[0])
+    const [selectedText, setSelectedText] = useState<SingleText>(textsList[0]);
     const [textsListFiltered, setTextsListFiltered] = useState<SingleText[]>(textsList);
     
     const [editableText, setEditableText] = useState<string>('');
     const [userName, setUserName] = useState<string>('');
 
+    
+    
+    const [editState, setEditState] = useState<boolean>(false);
+    const [preDelete, setPreDelete] = useState<boolean>(false);
 
 
     return (
@@ -66,7 +69,6 @@ const ListContainer: React.FC<textsViewerProps> = ({ textsList }) => {
                     );
                 })}
 
-
             </ListGroup>
 
             <Card id="single-text">
@@ -77,7 +79,11 @@ const ListContainer: React.FC<textsViewerProps> = ({ textsList }) => {
                     textsListFiltered={textsListFiltered}
                     setTextsListFiltered={setTextsListFiltered}
                     editableText={editableText}
-                    setEditableText={setEditableText} 
+                    setEditableText={setEditableText}
+                    editState={editState}
+                    setEditState={setEditState}
+                    preDelete={preDelete} 
+                    setPreDelete={setPreDelete}
                 /> : null}
             </Card>
 
